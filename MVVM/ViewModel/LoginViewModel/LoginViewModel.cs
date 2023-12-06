@@ -1,36 +1,47 @@
 ﻿using FluentValidation.Results;
+using my_school.Data;
 using my_school.MVVM.Model.Auth;
 using my_school.MVVM.View;
 using my_school.MVVM.View.Home;
 using my_school.Resources.Validators;
+using my_school.Services.Auth;
+using Newtonsoft.Json;
 using ReactiveUI;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json.Nodes;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media;
+using ToastNotifications;
+using ToastNotifications.Lifetime;
+using ToastNotifications.Position;
+using ToastNotifications.Messages;
+
+using System.Linq;
+using my_school.Resources.Shared.Toast;
 
 namespace my_school.MVVM.ViewModel.LoginViewModel
 {
-  internal  class LoginViewModel: ReactiveObject
+    internal class LoginViewModel : ReactiveObject
     {
         public Auth _auth;
         private LoginValidator _loginValidator;
         public ICommand LoginCommand { get; }
 
         public static string _colorError = "#FF0000";
-       
+
         Color colorError = (Color)ColorConverter.ConvertFromString(_colorError);
 
         private static string _colorDefault = "#BEBEBE";
 
-       readonly Color colorDefault = (Color)ColorConverter.ConvertFromString(_colorDefault);
+        readonly Color colorDefault = (Color)ColorConverter.ConvertFromString(_colorDefault);
         public string LabelText => "Usuário:";
+
+
+      
+
 
 
         public LoginViewModel()
@@ -40,7 +51,7 @@ namespace my_school.MVVM.ViewModel.LoginViewModel
             _loginValidator = new LoginValidator();
             UserNameBorderError = new SolidColorBrush(colorDefault);
             UserPasswordBorderError = new SolidColorBrush(colorDefault);
-      
+
         }
 
         public string UserName
@@ -123,7 +134,7 @@ namespace my_school.MVVM.ViewModel.LoginViewModel
             { Auth = auth };
             var homeView = new HomeView { DataContext = homeViewModel };
             homeView.Show();
-            //CloseLogin();
+            CloseLogin();
         }
 
 
@@ -148,18 +159,11 @@ namespace my_school.MVVM.ViewModel.LoginViewModel
 
 
 
-        private void ShowAuthenticationError()
+        private static void ShowAuthenticationError()
         {
-            //var messageBox = new MessageBox(
-            //    "Usuário inválido",
-            //    "Acesso negado", MessageBoxIcon.Error)
-            //{
-            //    HorizontalButtonsPanelAlignment = HorizontalAlignment.Center
-            //};
-
-            //var result = messageBox.Show(
-            //    new MessageBoxButton<MessageBoxResult>("Fechar",
-            //        MessageBoxResult.Yes, SpecialButtonRole.IsDefault));
+          
+            ToastManager toastManager = new ToastManager();
+            toastManager.ToastError("Usuário ou senha inválidos!");
         }
 
 
@@ -220,35 +224,36 @@ namespace my_school.MVVM.ViewModel.LoginViewModel
 
         private void Login(Auth auth)
         {
-            //using var dbContext = new ApplicationDbContext();
-            //var authService = new AuthService(dbContext);
-  
+            using var dbContext = new ApplicationDbContext();
+            var authService = new AuthService(dbContext);
+
             string userName = auth.UserName;
             string password = auth.Password;
 
+        
             var loginValidator = _loginValidator.Validate(new Auth
             { UserName = userName, Password = password });
 
-            //if (loginValidator.IsValid)
-            //{
-            //    if (authService.AuthenticateUser(userName, password))
-            //    {
-            //        GoToHomePage(auth);
-            //    }
-            //    else
-            //    {
-            //        ShowAuthenticationError();
-            //    }
-            //}
-            //else
-            //{
-            //    ShowValidationErrors(loginValidator.Errors);
-            //}
+            if (loginValidator.IsValid)
+            {
+                if (authService.AuthenticateUser(userName, password))
+                {
+                    GoToHomePage(auth);
+                }
+                else
+                {
+                    ShowAuthenticationError();
+                }
+            }
+            else
+            {
+                ShowValidationErrors(loginValidator.Errors);
+            }
         }
 
     }
 
-   
+
 
 
 }

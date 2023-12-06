@@ -31,7 +31,7 @@
             </Border>
 
             <StackPanel Margin="0 12 0 0">
-                
+
                 <Label>Usuário</Label>
                 <TextBox
                    Text="{Binding UserName,UpdateSourceTrigger=PropertyChanged}"
@@ -57,7 +57,7 @@
                     <Grid Margin="0 0 0 0">
 
                     </Grid>
-                    
+
 
                 </StackPanel>
 
@@ -69,9 +69,10 @@
                     Command="{Binding LoginCommand}" 
                     Foreground="#Ffffff"
                     FontWeight="Bold"
-                    
+                    Content="Entrar"
 					>
-                    Entrar
+
+
                 </Button>
 
 

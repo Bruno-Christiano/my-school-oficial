@@ -8,6 +8,11 @@
 
     <Application.Resources>
         <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/ToastNotifications.Messages;component/Themes/Default.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+
             <Style TargetType="TextBox">
                 <!--<Setter Property="BorderBrush" Value="red" />
                 <Setter Property="BorderThickness" Value="1" />-->

@@ -1,13 +1,7 @@
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Threading.Tasks;
-using System.Windows.Input;
-
 using my_school.MVVM.Model.User;
-
-
 using ReactiveUI;
+using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace my_school.MVVM.ViewModel.UserViewModel;
 
@@ -58,18 +52,18 @@ internal class UserViewModel : ReactiveObject
     //        var userService = new UserService(dbContext);
     //        user.Password = BCrypt.Net.BCrypt.HashPassword(user.Password);
     //        await userService.SaveUser(user);
-            
+
     //        var messageBox = new MessageBox(
     //            "Usuário criado com sucesso!",
     //            "Sucesso", MessageBoxIcon.Information )
     //        {
     //            HorizontalButtonsPanelAlignment = HorizontalAlignment.Center
     //        };
-                
+
     //        var result = messageBox.Show(
     //            new MessageBoxButton<MessageBoxResult>("Fechar",
     //                MessageBoxResult.Yes, SpecialButtonRole.IsDefault));
-            
+
     //        return user;
     //    }
     //    catch (Exception e)

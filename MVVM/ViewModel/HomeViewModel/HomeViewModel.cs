@@ -9,11 +9,11 @@ namespace my_school.MVVM.ViewModel.HomeViewModel;
 internal class HomeViewModel : ReactiveObject
 {
     private Auth _auth;
-  
+
     public ICommand OpenWindowUserCommand { get; }
-    
+
     private UserControl _createUserView;
-    
+
     public HomeViewModel()
     {
         OpenWindowUserCommand =
@@ -33,8 +33,8 @@ internal class HomeViewModel : ReactiveObject
             }
         }
     }
-    
-    
+
+
     public UserControl CreateUserView
     {
         get => _createUserView;
@@ -43,11 +43,11 @@ internal class HomeViewModel : ReactiveObject
 
     public void OpenWindowRegisterUser()
     {
-       /* var userRegistrationView = new CreateUserView(); */// Substitua esta linha com sua lógica de criação do UserRegistrationView
-        //CreateUserView = userRegistrationView;
-        
+        /* var userRegistrationView = new CreateUserView(); */// Substitua esta linha com sua lógica de criação do UserRegistrationView
+                                                              //CreateUserView = userRegistrationView;
+
     }
 
 
-  
+
 }

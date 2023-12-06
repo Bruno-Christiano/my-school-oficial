@@ -1,10 +1,5 @@
 ﻿using FluentValidation;
 using my_school.MVVM.Model.Auth;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace my_school.Resources.Validators
