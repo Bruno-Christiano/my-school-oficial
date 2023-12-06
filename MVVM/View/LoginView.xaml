@@ -21,7 +21,9 @@
         Height="300">
         <StackPanel Margin="0">
             <Border Margin="5"
-                    CornerRadius="10">
+                    CornerRadius="4"
+                   
+                    >
                 <TextBlock Margin="5"
                            FontSize="24"
                            HorizontalAlignment="Center"
@@ -32,32 +34,29 @@
 
             <StackPanel Margin="0 12 0 0">
 
-                <Label>Usuário</Label>
-                <TextBox
-                   Text="{Binding UserName,UpdateSourceTrigger=PropertyChanged}"
-                   BorderBrush="{Binding UserNameBorderError}"
-                   Height="35"  
-                   BorderThickness="1.25"
-                    >
+                <StackPanel>
+                    <Label>Usuário</Label>
+                    <TextBox
+                        Text="{Binding UserName,UpdateSourceTrigger=PropertyChanged}"        
+                         Style="{StaticResource CustomTextBoxStyle}"
+                        BorderBrush="{Binding UserNameBorderError}"
+        
+                    />
+                    <TextBlock Foreground="#DC0032" Text="{Binding UserNameError}" ></TextBlock>
 
-                </TextBox>
-                <TextBlock Foreground="Red" Text="{Binding UserNameError}" ></TextBlock>
+                </StackPanel>
+
+
 
                 <StackPanel Margin="0 0 0 0">
                     <Label>Senha</Label>
                     <PasswordBox 
-                        x:Name="PasswordBox"
-                        PasswordChar="*" 
-                        Height="35"
+                        Style="{StaticResource CustomPasswordBoxStyle}"
                         BorderBrush="{Binding UserPasswordBorderError}" 
                         PasswordChanged="PasswordChanged"
-                          BorderThickness="1.25"
+                        
                         />
-                    <TextBlock Foreground="Red" Text="{Binding UserPasswordError}" ></TextBlock>
-                    <Grid Margin="0 0 0 0">
-
-                    </Grid>
-
+                    <TextBlock Foreground="#DC0032" Text="{Binding UserPasswordError}" ></TextBlock>
 
                 </StackPanel>
 

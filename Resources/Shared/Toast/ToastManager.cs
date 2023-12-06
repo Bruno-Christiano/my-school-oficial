@@ -22,7 +22,7 @@ namespace my_school.Resources.Shared.Toast
             var positionProvider = new WindowPositionProvider(
                  parentWindow: mainWindow,
                 corner: Corner.TopRight,
-                 offsetX: 0,
+                 offsetX: mainWindow.Width,
                  offsetY: 0
    );
 
