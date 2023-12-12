@@ -7,6 +7,24 @@
         mc:Ignorable="d"
         Title="HomeView" Height="450" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid 
+            Grid.Row="0" 
+            Background="Red" 
+            Height="40"
+            VerticalAlignment="Top"
+            >
+            <!-- Adicionei um TextBox como conteúdo do Grid -->
+            <TextBlock 
+                Text="Gerenciamento..." 
+                VerticalAlignment="Center" 
+                TextAlignment="Center"
+                />
+        </Grid>
+        <UserControl 
+            Grid.Row="1" x:Name="MainContent"/>
     </Grid>
 </Window>

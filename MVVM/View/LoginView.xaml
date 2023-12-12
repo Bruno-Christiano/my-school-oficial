@@ -28,6 +28,7 @@
                            FontSize="24"
                            HorizontalAlignment="Center"
                            Text="Login"
+                           Background="Aquamarine"
                            >
                 </TextBlock>
             </Border>

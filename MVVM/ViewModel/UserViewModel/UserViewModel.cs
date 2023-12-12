@@ -30,6 +30,25 @@ internal class UserViewModel : ReactiveObject
         "Gestor"
     };
 
+    public List<User> Users { get; } = new List<User>
+    {
+       new User{UserName = "Bruno",Role = "ADM", Email = "",Password = "",},
+       new User{UserName = "Bruno",Role = "ADM", Email = "",Password = "",},
+       new User{UserName = "Bruno",Role = "ADM", Email = "",Password = "",},
+       new User{UserName = "Bruno",Role = "ADM", Email = "",Password = "",},
+       new User{UserName = "Bruno",Role = "ADM", Email = "",Password = "",},
+       new User{UserName = "Bruno",Role = "ADM", Email = "",Password = "",},
+       new User{UserName = "Bruno",Role = "ADM", Email = "",Password = "",},
+       new User{UserName = "Bruno",Role = "ADM", Email = "",Password = "",},
+       new User{UserName = "Bruno",Role = "ADM", Email = "",Password = "",},
+       new User{UserName = "Bruno",Role = "ADM", Email = "",Password = "",},
+       new User{UserName = "Bruno",Role = "ADM", Email = "",Password = "",}, 
+       new User{UserName = "Bruno",Role = "ADM", Email = "",Password = "",},
+       new User{UserName = "Bruno",Role = "ADM", Email = "",Password = "",},
+        
+        
+    };
+    
     public User User
     {
         get => _user;

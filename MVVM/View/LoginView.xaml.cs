@@ -15,8 +15,7 @@ namespace my_school.MVVM.View
             DataContext = new LoginViewModel();
 
         }
-
-
+        
         private void PasswordChanged(object sender, RoutedEventArgs e)
         {
             //atualzia o valor na viewModel forma mais simples para "passwordBox".

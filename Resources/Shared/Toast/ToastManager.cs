@@ -22,7 +22,7 @@ namespace my_school.Resources.Shared.Toast
             var positionProvider = new WindowPositionProvider(
                  parentWindow: mainWindow,
                 corner: Corner.TopRight,
-                 offsetX: mainWindow.Width,
+                 offsetX: 0,
                  offsetY: 0
    );
 
@@ -36,9 +36,9 @@ namespace my_school.Resources.Shared.Toast
         });
 
 
-        public void ToastError(string text)
+        public void ToastError()
         {
-            notifier.ShowError(text);
+            notifier.ShowError("alguma coisa aqui");
         }
     }
 }

@@ -5,8 +5,169 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:my_school.MVVM.View.User.CreateUserView"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="800"
+             xmlns:viewModelUser="clr-namespace:my_school.MVVM.ViewModel.UserViewModel"
+             >
+    
+    <Control.DataContext>
+        <viewModelUser:UserViewModel />
+        <!-- Substitua 'local' pelo namespace onde está sua LoginViewModel -->
+    </Control.DataContext>
+    
+    <UserControl.Resources>
+        <!-- Estilo para personalizar o polegar da barra de rolagem vertical -->
+        <Style x:Key="VerticalScrollBarThumbStyle" TargetType="Thumb">
+            <Setter Property="Background" Value="Red" ></Setter>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Thumb">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="2"
+                                Width="7"
+                                Height="40"
+                                VerticalAlignment="Top"
+                                >
+                            <Rectangle/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Estilo para personalizar a barra de rolagem vertical -->
+        <Style x:Key="VerticalScrollBarStyle" TargetType="ScrollBar">
+            <Setter Property="Background" Value="LightGray" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ScrollBar">
+                        <Grid Background="Aquamarine">
+                            <Track 
+                                x:Name="PART_Track" 
+                            >
+                                <Track.Thumb>
+                                    <Thumb Style="{StaticResource VerticalScrollBarThumbStyle}" 
+                                    />
+                                </Track.Thumb>
+                            </Track>
+                            
+                            <!-- <Rectangle  -->
+                            <!--     Grid.Row="0" -->
+                            <!--     x:Name="RectangleTrack"  -->
+                            <!--            RadiusX="2"  -->
+                            <!--            RadiusY="2"  -->
+                            <!--            Fill="{TemplateBinding Background}" -->
+                            <!--            Width="7" -->
+                            <!--     /> -->
+                            
+                         
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    
+    
+    
     <Grid>
-            
+       <!-- <TextBlock> Create User</TextBlock>   -->
+       <!--  <Button Click="GoToHome" Width="100" Height="100" >home</Button> -->
+       <Border 
+           BorderBrush="Red"
+           BorderThickness="2"
+           VerticalAlignment="Center"
+           HorizontalAlignment="Center"
+           Width="750"
+           Height="600"
+           >
+           <Grid >
+               <Grid.ColumnDefinitions>
+                   <ColumnDefinition Width="30 *"></ColumnDefinition>
+                   <ColumnDefinition Width="70 *"></ColumnDefinition>
+               </Grid.ColumnDefinitions>
+               <!-- Grid da tabela !-->
+               <Border 
+                   Grid.Column="0"
+                   Background="Aqua"
+                   BorderBrush="Red"
+                   BorderThickness=" 0 0 2 0"
+                   >
+                   <Grid 
+                   >
+                       <Grid.ColumnDefinitions>
+                           <ColumnDefinition ></ColumnDefinition>
+                       </Grid.ColumnDefinitions>
+                       <Grid.RowDefinitions>
+                           <RowDefinition Height="40" ></RowDefinition>
+                           <RowDefinition Height="40" ></RowDefinition>
+                           <RowDefinition ></RowDefinition>
+                       </Grid.RowDefinitions>
+                   
+                       <Grid
+                           Grid.Row="0"
+                           Background="Red"
+                       >
+                           <TextBlock
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="20"
+                               Foreground="White"
+                               FontWeight="DemiBold"
+                               Text="Usuários"
+                               Margin="0"
+                               Padding="0"
+                           >
+                       
+                           </TextBlock> 
+                       </Grid>
+                   
+                       <Grid
+                           Grid.Row="1"
+                           Margin="8"
+                       >
+                           <TextBox>
+                           
+                           </TextBox>
+                       
+                       </Grid>
+                   
+                       <Grid
+                           Grid.Row="2"
+                           Margin="8"
+                           VerticalAlignment="Top"
+                       >
+                       <ListBox 
+                           ItemsSource="{Binding Users}"
+                           DisplayMemberPath="UserName"
+                           MaxHeight="230"
+                           >
+                           <ListBox.Resources>
+                               <Style 
+                                   TargetType="ScrollBar" 
+                                   >
+                                   
+                               </Style>
+                               
+                           </ListBox.Resources>
+                           
+                       </ListBox>
+                           
+                       </Grid>
+                   </Grid>
+                   
+               </Border>
+              
+               
+               <!-- Grid da Form !-->
+               <StackPanel Grid.Column="1">
+                   <TextBlock> Conteudo form</TextBlock>
+                   
+               </StackPanel>
+           </Grid>
+           
+           
+       </Border>
     </Grid>
 </UserControl>

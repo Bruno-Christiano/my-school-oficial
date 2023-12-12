@@ -3,21 +3,22 @@ using my_school.MVVM.Model.Auth;
 using ReactiveUI;
 using System.Windows.Controls;
 using System.Windows.Input;
+using my_school.Services;
 
 namespace my_school.MVVM.ViewModel.HomeViewModel;
 
 internal class HomeViewModel : ReactiveObject
 {
     private Auth _auth;
-
-    public ICommand OpenWindowUserCommand { get; }
+    public ICommand GoToRegisterUserCommand { get; }
 
     private UserControl _createUserView;
+    private NavigationService _navigationService;
 
     public HomeViewModel()
     {
-        OpenWindowUserCommand =
-            new RelayCommand(() => OpenWindowRegisterUser());
+        GoToRegisterUserCommand =
+            new RelayCommand(() => GoToRegisterUser());
     }
 
 
@@ -34,20 +35,11 @@ internal class HomeViewModel : ReactiveObject
         }
     }
 
-
-    public UserControl CreateUserView
+    
+    public void GoToRegisterUser()
     {
-        get => _createUserView;
-        set => this.RaiseAndSetIfChanged(ref _createUserView, value);
+        this._navigationService.NavigateToRegisterUser();
     }
-
-    public void OpenWindowRegisterUser()
-    {
-        /* var userRegistrationView = new CreateUserView(); */// Substitua esta linha com sua lógica de criação do UserRegistrationView
-                                                              //CreateUserView = userRegistrationView;
-
-    }
-
-
+    
 
 }

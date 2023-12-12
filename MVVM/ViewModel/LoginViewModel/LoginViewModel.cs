@@ -38,12 +38,7 @@ namespace my_school.MVVM.ViewModel.LoginViewModel
 
         readonly Color colorDefault = (Color)ColorConverter.ConvertFromString(_colorDefault);
         public string LabelText => "Usuário:";
-
-
-      
-
-
-
+        
         public LoginViewModel()
         {
             _auth = new Auth();
@@ -163,7 +158,7 @@ namespace my_school.MVVM.ViewModel.LoginViewModel
         {
           
             ToastManager toastManager = new ToastManager();
-            toastManager.ToastError("Usuário ou senha inválidos!");
+            // toastManager.ToastError("Usuário ou senha inválidos!");
         }
 
 
@@ -252,8 +247,5 @@ namespace my_school.MVVM.ViewModel.LoginViewModel
         }
 
     }
-
-
-
-
+    
 }
